@@ -2,9 +2,18 @@ pipeline {
   agent any
   stages {
     stage('Compile') {
-      steps {
-        sh 'mvn install'
-        echo 'Done'
+      parallel {
+        stage('Compile') {
+          steps {
+            sh 'mvn install'
+            echo 'Done'
+          }
+        }
+        stage('Hello') {
+          steps {
+            echo 'Hello'
+          }
+        }
       }
     }
     stage('Test') {
