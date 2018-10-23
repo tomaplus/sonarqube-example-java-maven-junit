@@ -17,8 +17,17 @@ pipeline {
       }
     }
     stage('Test') {
-      steps {
-        sh 'mvn test'
+      parallel {
+        stage('Test') {
+          steps {
+            sh 'mvn test'
+          }
+        }
+        stage('SonarQube') {
+          steps {
+            withSonarQubeEnv 'SonarQube'
+          }
+        }
       }
     }
     stage('Static Code Analysis') {
