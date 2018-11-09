@@ -20,7 +20,7 @@ pipeline {
       parallel {
         stage('Test') {
           steps {
-            sh 'echo \'ok\''
+            sh 'mvn test'
           }
         }
         stage('SonarQube') {
