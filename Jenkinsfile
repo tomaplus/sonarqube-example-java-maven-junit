@@ -21,10 +21,5 @@ pipeline {
         sh 'mvn test'
       }
     }
-    stage('Static Code Analysis') {
-      steps {
-        waitForQualityGate true
-      }
-    }
   }
 }
