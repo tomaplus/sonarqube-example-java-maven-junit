@@ -7,9 +7,18 @@ pipeline {
   }
   stages {
     stage('build') {
-      steps {
-        sh 'echo Hello'
-        sh 'docker build '
+      parallel {
+        stage('build') {
+          steps {
+            sh 'echo Hello'
+            sh 'docker build '
+          }
+        }
+        stage('') {
+          steps {
+            sh 'sonnarScaner'
+          }
+        }
       }
     }
   }
