@@ -1,0 +1,4 @@
+From openjdk:8-jre-alpine
+
+run apk add git
+COPY . /src/
