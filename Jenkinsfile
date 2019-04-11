@@ -9,6 +9,7 @@ pipeline {
     stage('build') {
       steps {
         sh 'echo Hello'
+        sh 'docker build '
       }
     }
   }
